@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary position-fixed w-100 z-2 my-0">
+    <div class="container-fluid my-3">
+      <a class="navbar-brand" routerLink="home">
+        <img src="./assets/images/freshcart-logo.svg" alt="logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+        <ul class="navbar-nav cursor-pointer ">
+         
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active-link" routerLink="home" >{{"navbar.home"|translate}}</a>
+          </li>
+         
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active-link" routerLink="product" >{{"navbar.product"|translate}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active-link" routerLink="categeories" >{{"navbar.categories"|translate}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active-link" routerLink="brands" >{{"navbar.Brands"|translate}}</a>
+          </li>
+          
+          
+          
+        </ul>
+
+        <ul class="navbar-nav  cursor-pointer">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             language
+            </a>
+            <ul class="dropdown-menu">
+              <li [class.bg-info]="_TranslateService.currentLang=='en'" (click)="changedirection('en')" class="cursor-pointer"><a class="dropdown-item" >ENGLISH</a></li>
+              <li [class.bg-info]="_TranslateService.currentLang=='ar'" (click)="changedirection('ar')" class="cursor-pointer"><a class="dropdown-item" >Arabic</a></li>
+              
+            </ul>
+          </li>
+          <li class="nav-item position-relative">
+            <a class="nav-link" routerLinkActive="active-link" routerLink="cart" >
+              <i class="fa-solid fa-cart-shopping fa-2xl"></i>
+              <span class="badge bg-main position-absolute top-0 start-0">{{productNum}}</span>
+            </a>
+            
+          </li>
+         
+          
+            <li class="nav-item">
+              <a class="nav-link"  >
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  >
+                  <i class="fa-brands  fa-instagram"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"  >
+                  <i class="fa-brands fa-twitter"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"  >
+                  <i class="fa-brands fa-linkedin"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" (click)="_AuthService.logout()"  >
+                  {{"navbar.signout"|translate}}
+                </a>
+              </li>
+         
+            
+            
+            
+          </ul>
+      </div>
+    </div>
+  </nav>

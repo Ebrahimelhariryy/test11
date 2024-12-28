@@ -1,0 +1,12 @@
+<section class="my-3">
+    <h1 class="text-main text-center my-5"> fresh cart categories</h1>
+    <div class="row">
+       @for (item of categorylist; track $index) {
+        <div class="col-md-4 border-1 my-3  ">
+            <img [src]="item.image" height="300px" class="w-100 " alt="">
+            <h3 class="text-center text-main">{{item.name}}</h3>
+            
+        </div>
+       }
+    </div>
+</section>

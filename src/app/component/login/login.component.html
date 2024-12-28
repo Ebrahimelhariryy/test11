@@ -1,0 +1,50 @@
+<form [formGroup]="loginform"(ngSubmit)="loginfun()">
+<h1>login Now</h1>
+
+<div>
+    <label for="email">email:</label>
+ <input 
+  formControlName="email" class="form-control m-2" type="email" id="email">
+ @if ((loginform.get('email')?.touched ||loginform.get('email')?.dirty) && loginform.get('email')?.errors)
+        {
+           <div class="alert alert-danger w-50 my-0">
+               @if (loginform.get('email')?.getError('required')) {
+                   <p> email is required</p>
+               }
+               @else if (loginform.get('email')?.getError('email')) {
+                   <p>enter a valid email</p>
+               }
+               @else if (loginform.get('email')?.getError('maxlength')) {
+                   <p>email should be less than 20</p>
+               }
+                
+           </div>
+       }
+</div>
+<div>
+    <label for="password">password:</label>
+ <input formControlName="password" class="form-control m-2" type="password" id="email">
+ @if ((loginform.get('password')?.touched ||loginform.get('password')?.dirty) && loginform.get('password')?.errors){
+    <div class="alert alert-danger w-50">
+        @if (loginform.get('password')?.getError('required')) {
+            <p > password is required</p>}
+            @else if (loginform.get('password')?.getError('pattern')) {
+                <p>enter a valid password</p>
+            }
+             
+        </div>
+    }
+</div>
+<div class="d-flex align-items-center justify-content-end">
+    <a class="link-primary" routerLink="/forget">forget password?</a>
+<button class="btn-main  m-3">login
+    <span>
+        @if (loding) {<i class="fas fa-spin fa-spinner"> </i>}
+    </span>
+</button>
+</div>
+
+@if (msg) {
+    <p class="alert alert-danger w-50 my-0">{{msg}}</p>
+}
+</form>

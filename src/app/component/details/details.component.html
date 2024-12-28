@@ -1,0 +1,51 @@
+@if (productDetails) {
+    <section class="container">
+        <h1 class="text-center my-2 text-main">Product Details</h1>
+        
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <owl-carousel-o [options]="customOptions">
+                    <ng-template carouselSlide >
+                        <img [src]="productDetails.imageCover " class="w-100" alt="">
+                      </ng-template>
+        
+                    @for (item of productDetails.images; track $index) {
+                        <ng-template carouselSlide >
+                            <img [src]="item" alt="">
+                          </ng-template>
+                    }
+                   
+                      
+                   
+                    
+                  </owl-carousel-o>
+           
+            </div>
+           
+            <div  class="col-md-9">
+                <p class="h3">{{productDetails.title}}</p>
+                <p class="text-muted">{{productDetails.description}}</p>
+                <h3 class="h6">{{productDetails.category.name}}</h3>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="text-muted">{{productDetails.price}} EGP</span>
+                    <div>
+                        <span>{{productDetails.ratingsAverage}} </span>
+                        @for (num of [1,2,3,4,5].slice(0,productDetails.ratingsAverage); track $index) {
+                           <i class="fas fa-star rating-color"></i>
+                       }
+                           
+                        @if (productDetails.ratingsAverage %1!=0) {
+                           <i class="fa-solid fa-star-half rating-color"></i>
+                        }
+                       
+                    </div>
+                    
+                </div>
+                <button class="btn-main w-100 m-3">+Add to cart</button>
+            </div>
+        </div>
+        
+        
+        
+        </section>
+}
